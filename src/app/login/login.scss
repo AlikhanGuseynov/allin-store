@@ -1,0 +1,229 @@
+.login{
+  :root {
+    --primary-green: #7FB77E;
+    --light-green: #B1D7B4;
+    --cream: #FFF8EA;
+    --beige: #F7EDDB;
+    --dark-text: #2D3E40;
+  }
+
+  * {
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--dark-text);
+  }
+
+  .btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #6ca56b;
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:disabled {
+    background-color: #b8d5b7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-outline {
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-2px);
+  }
+
+  .form-container {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+  }
+
+  .input-field {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    background-color: var(--cream);
+  }
+
+  .input-field:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(127, 183, 126, 0.2);
+    outline: none;
+  }
+
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    color: #888;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .divider::before {
+    margin-right: 16px;
+  }
+
+  .divider::after {
+    margin-left: 16px;
+  }
+
+  .modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+
+  .modal-content {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    animation: modalFadeIn 0.3s ease;
+  }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 16px 24px;
+    background-color: var(--primary-green);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    accent-color: var(--primary-green);
+  }
+
+  .link {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .link:hover {
+    color: #6ca56b;
+    text-decoration: underline;
+  }
+
+  .page-transition {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .page-transition.hidden {
+    opacity: 0;
+    transform: translateX(20px);
+    pointer-events: none;
+  }
+
+  .page-transition.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .footer {
+    background-color: white;
+    border-top: 1px solid #eee;
+  }
+
+  .language-switcher button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .language-switcher button.active {
+    background-color: var(--light-green);
+    color: var(--dark-text);
+    font-weight: 500;
+  }
+
+  .language-switcher button:hover:not(.active) {
+    background-color: var(--beige);
+  }
+
+}
