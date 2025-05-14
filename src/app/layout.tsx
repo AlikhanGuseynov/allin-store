@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -24,9 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        {/*<Head>*/}
-        {/*    <script src="https://cdn.tailwindcss.com" defer></script>*/}
-        {/*</Head>*/}
+            <script async src="https://cdn.tailwindcss.com"></script>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         </body>

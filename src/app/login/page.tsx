@@ -2,6 +2,7 @@
 
 import './login.scss'
 import React, {useState} from 'react';
+import Lottie from 'react-lottie';
 
 const AuthComponent: React.FC = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -10,7 +11,17 @@ const AuthComponent: React.FC = () => {
         setIsLogin(!isLogin);
     };
 
+    const defaultOptions = {
+        loop: true,
+        autoplay: true, // Автозапуск анимации
+        path: 'https://assets10.lottiefiles.com/packages/lf20_qmfs6c3i.json',
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     return (
+        <div className="login">
             <div className="min-h-screen flex flex-col">
                 <main className="flex-grow flex flex-col md:flex-row">
                     {/* Visual Section */}
@@ -22,20 +33,13 @@ const AuthComponent: React.FC = () => {
                                 <p className="text-white text-lg opacity-90">Fresh starts delivered daily</p>
                             </div>
                             <div className="flex justify-center">
-                                {/*<lottie-player*/}
-                                {/*    src="https://assets10.lottiefiles.com/packages/lf20_qmfs6c3i.json"*/}
-                                {/*    background="transparent"*/}
-                                {/*    speed="1"*/}
-                                {/*    style={{width: '300px', height: '300px'}}*/}
-                                {/*    loop*/}
-                                {/*    autoplay*/}
-                                {/*/>*/}
+                                <Lottie options={defaultOptions}/>
                             </div>
                         </div>
                     </div>
 
                     {/* Auth Forms Section */}
-                    <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 relative">
+                    <div className="right-section w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 relative">
                         {/* Login Form */}
                         {isLogin ? (
                             <div className="w-full max-w-md">
@@ -166,6 +170,7 @@ const AuthComponent: React.FC = () => {
                     </div>
                 </main>
             </div>
+        </div>
     );
 };
 

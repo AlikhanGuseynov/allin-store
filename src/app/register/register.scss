@@ -1,4 +1,4 @@
-.login{
+.register {
   :root {
     --primary-green: #7FB77E;
     --light-green: #B1D7B4;
@@ -15,11 +15,6 @@
   body {
     background-color: var(--cream);
     color: var(--dark-text);
-  }
-  .right-section{
-
-    background-color: #FFF8EA;
-    color: #2D3E40;
   }
 
   .btn-primary {
@@ -192,21 +187,6 @@
     text-decoration: underline;
   }
 
-  .page-transition {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .page-transition.hidden {
-    opacity: 0;
-    transform: translateX(20px);
-    pointer-events: none;
-  }
-
-  .page-transition.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
   .footer {
     background-color: white;
     border-top: 1px solid #eee;
@@ -229,6 +209,200 @@
 
   .language-switcher button:hover:not(.active) {
     background-color: var(--beige);
+  }
+
+  .progress-container {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .progress-bar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #e0e0e0;
+    z-index: 0;
+  }
+
+  .progress-bar-fill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    background-color: var(--primary-green);
+    z-index: 1;
+    transition: width 0.3s ease;
+  }
+
+  .step {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #888;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .step.active {
+    border-color: var(--primary-green);
+    background-color: var(--primary-green);
+    color: white;
+  }
+
+  .step.completed {
+    border-color: var(--primary-green);
+    background-color: var(--primary-green);
+    color: white;
+  }
+
+  .step-label {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 500;
+  }
+
+  .step.active .step-label,
+  .step.completed .step-label {
+    color: var(--dark-text);
+    font-weight: 600;
+  }
+
+  .form-step {
+    display: none;
+  }
+
+  .form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .password-strength {
+    margin-top: 8px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+  }
+
+  .password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .password-strength-text {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  .password-requirements {
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .requirement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    color: #888;
+  }
+
+  .requirement.met {
+    color: var(--primary-green);
+  }
+
+  .requirement-icon {
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
+
+  .success-animation {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid var(--primary-green);
+    position: relative;
+    animation: checkmarkScale 0.3s ease-in-out;
+  }
+
+  .success-checkmark::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 28%;
+    width: 25%;
+    height: 50%;
+    border-right: 4px solid var(--primary-green);
+    border-bottom: 4px solid var(--primary-green);
+    transform: rotate(45deg) translate(-40%, -60%);
+    animation: checkmarkCheck 0.2s ease-in-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes checkmarkScale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes checkmarkCheck {
+    0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-40%, -60%);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(45deg) translate(-40%, -60%);
+    }
   }
 
 }
