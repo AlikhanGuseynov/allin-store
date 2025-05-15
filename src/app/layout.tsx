@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
+import {ToastContainer} from "react-toastify";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
             <script async src="https://cdn.tailwindcss.com"></script>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <ToastContainer />
         </body>
         </html>
     );

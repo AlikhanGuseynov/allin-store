@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {FormEventHandler, useEffect, useRef, useState} from 'react';
 import './register.scss'
 import Lottie from 'react-lottie';
 
@@ -35,7 +35,8 @@ const Register = () => {
     };
 
     // Password strength checker
-    const checkPasswordStrength = (password) => {
+    const checkPasswordStrength = (password: string) => {
+        console.log(password)
         let strength = 0;
         if (password.length >= 8) strength += 25;
         if (/[A-Z]/.test(password)) strength += 25;
@@ -46,12 +47,15 @@ const Register = () => {
     };
 
     // Error helpers
-    const showError = (field, msg) => setErrors((prev) => ({ ...prev, [field]: msg }));
-    const clearError = (field) => setErrors((prev) => ({ ...prev, [field]: '' }));
+    const showError = (field, msg) => setErrors((prev) => ({...prev, [field]: msg}));
+    const clearError = (field) => setErrors((prev) => ({...prev, [field]: ''}));
 
     const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const validatePhone = (phone) => /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(phone);
     const validateZip = (zip) => /^\d{5}(-\d{4})?$/.test(zip);
+
+    useEffect(() => {
+    }, [errors])
 
     // Form step validation
     const validateStep1 = () => {
@@ -61,11 +65,11 @@ const Register = () => {
             valid = false;
         } else clearError('email');
 
-        const strength = checkPasswordStrength(formData.password);
-        if (strength < 75) {
-            showError('password', 'Please create a stronger password');
-            valid = false;
-        } else clearError('password');
+        // const strength = checkPasswordStrength(formData.password);
+        // if (strength < 75) {
+        //     showError('password', 'Please create a stronger password');
+        //     valid = false;
+        // } else clearError('password');
 
         if (formData.password !== formData.confirmPassword) {
             showError('confirmPassword', 'Passwords do not match');
@@ -138,7 +142,7 @@ const Register = () => {
     };
 
     // Step change handler
-    const goToStep = (step) => setCurrentStep(step);
+    const goToStep = (step: number) => setCurrentStep(step);
 
     // Submit form
     const handleSubmit = (e) => {
@@ -151,6 +155,12 @@ const Register = () => {
             showToast('Account created!');
         }, 1500);
     };
+
+
+    const confirmAccountStep = () => {
+        if (!validateStep1()) return;
+        goToStep(2)
+    }
 
 
     const defaultOptions = {
@@ -215,9 +225,10 @@ const Register = () => {
                                         </div>
                                     </div>
                                 </div>
-
                                 <form id="signup-form">
-                                    <div className="form-step active" id="form-step-1">
+
+                                    <div className={['form-step', currentStep === 1 ? 'active' : ''].join(' ')}
+                                         id="form-step-1">
                                         <div className="space-y-5">
                                             <div>
                                                 <label htmlFor="email" className="block mb-2 font-medium">Email
@@ -230,34 +241,36 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="password" className="block mb-2 font-medium">Create
                                                     Password</label>
-                                                <input type="password" id="password" className="input-field w-full"
-                                                       placeholder="••••••••" required/>
-                                                <div className="password-strength">
-                                                    <div className="password-strength-bar"
-                                                         id="password-strength-bar"></div>
-                                                </div>
-                                                <div className="password-strength-text"
-                                                     id="password-strength-text">Password
-                                                    strength
-                                                </div>
-                                                <div className="password-requirements">
-                                                    <div className="requirement" id="req-length">
-                                                        <span className="requirement-icon">○</span>
-                                                        <span>At least 8 characters</span>
-                                                    </div>
-                                                    <div className="requirement" id="req-uppercase">
-                                                        <span className="requirement-icon">○</span>
-                                                        <span>At least 1 uppercase letter</span>
-                                                    </div>
-                                                    <div className="requirement" id="req-lowercase">
-                                                        <span className="requirement-icon">○</span>
-                                                        <span>At least 1 lowercase letter</span>
-                                                    </div>
-                                                    <div className="requirement" id="req-number">
-                                                        <span className="requirement-icon">○</span>
-                                                        <span>At least 1 number</span>
-                                                    </div>
-                                                </div>
+                                                <input
+                                                    onInput={(event: FormEventHandler<HTMLInputElement>) => checkPasswordStrength(event.target.value)}
+                                                    type="password" id="password" className="input-field w-full"
+                                                    placeholder="••••••••" required/>
+                                                {/*<div className="password-strength">*/}
+                                                {/*    <div className="password-strength-bar"*/}
+                                                {/*         id="password-strength-bar"></div>*/}
+                                                {/*</div>*/}
+                                                {/*<div className="password-strength-text"*/}
+                                                {/*     id="password-strength-text">*/}
+                                                {/*    Password strength*/}
+                                                {/*</div>*/}
+                                                {/*<div className="password-requirements">*/}
+                                                {/*    <div className="requirement" id="req-length">*/}
+                                                {/*        <span className="requirement-icon">○</span>*/}
+                                                {/*        <span>At least 8 characters</span>*/}
+                                                {/*    </div>*/}
+                                                {/*    <div className="requirement" id="req-uppercase">*/}
+                                                {/*        <span className="requirement-icon">○</span>*/}
+                                                {/*        <span>At least 1 uppercase letter</span>*/}
+                                                {/*    </div>*/}
+                                                {/*    <div className="requirement" id="req-lowercase">*/}
+                                                {/*        <span className="requirement-icon">○</span>*/}
+                                                {/*        <span>At least 1 lowercase letter</span>*/}
+                                                {/*    </div>*/}
+                                                {/*    <div className="requirement" id="req-number">*/}
+                                                {/*        <span className="requirement-icon">○</span>*/}
+                                                {/*        <span>At least 1 number</span>*/}
+                                                {/*    </div>*/}
+                                                {/*</div>*/}
                                                 <div className="error-message hidden" id="password-error"></div>
                                             </div>
 
@@ -272,6 +285,7 @@ const Register = () => {
 
                                             <div className="pt-4">
                                                 <button type="button" id="next-to-step-2"
+                                                        onClick={() => confirmAccountStep()}
                                                         className="btn-primary w-full py-3 rounded-lg font-medium">Continue
                                                 </button>
                                             </div>
@@ -309,7 +323,8 @@ const Register = () => {
                                         </div>
                                     </div>
 
-                                    <div className="form-step" id="form-step-2">
+                                    <div className={['form-step', currentStep === 2 ? 'active' : ''].join(' ')}
+                                         id="form-step-2">
                                         <div className="space-y-5">
                                             <div>
                                                 <label htmlFor="first-name" className="block mb-2 font-medium">First
@@ -345,16 +360,20 @@ const Register = () => {
 
                                             <div className="pt-4 flex gap-4">
                                                 <button type="button" id="back-to-step-1"
+                                                        onClick={() => goToStep(1)}
                                                         className="btn-outline w-1/3 py-3 rounded-lg font-medium">Back
                                                 </button>
                                                 <button type="button" id="next-to-step-3"
-                                                        className="btn-primary w-2/3 py-3 rounded-lg font-medium">Continue
+                                                        onClick={() => goToStep(3)}
+                                                        className="btn-primary w-2/3 py-3 rounded-lg font-medium">
+                                                    Continue
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="form-step" id="form-step-3">
+                                    <div className={['form-step', currentStep === 3 ? 'active' : ''].join(' ')}
+                                         id="form-step-3">
                                         <div className="space-y-5">
                                             <div>
                                                 <label htmlFor="street-address" className="block mb-2 font-medium">Street
@@ -477,7 +496,8 @@ const Register = () => {
                                         </div>
                                     </div>
 
-                                    <div className="form-step" id="form-step-4">
+                                    <div className={['form-step', currentStep === 4 ? 'active' : ''].join(' ')}
+                                         id="form-step-4">
                                         <div className="text-center py-6">
                                             <div className="success-animation">
                                                 <div className="success-checkmark"></div>
@@ -496,6 +516,7 @@ const Register = () => {
                                             </div>
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>

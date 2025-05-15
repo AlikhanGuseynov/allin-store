@@ -1,24 +1,16 @@
 .register {
-  :root {
-    --primary-green: #7FB77E;
-    --light-green: #B1D7B4;
-    --cream: #FFF8EA;
-    --beige: #F7EDDB;
-    --dark-text: #2D3E40;
-  }
-
   * {
     font-family: 'Quicksand', sans-serif;
     box-sizing: border-box;
   }
 
   body {
-    background-color: var(--cream);
-    color: var(--dark-text);
+    background-color: #FFF8EA;
+    color: #2D3E40;
   }
 
   .btn-primary {
-    background-color: var(--primary-green);
+    background-color: #7FB77E;
     color: white;
     transition: all 0.3s ease;
   }
@@ -55,11 +47,11 @@
     border-radius: 8px;
     padding: 12px 16px;
     transition: all 0.3s ease;
-    background-color: var(--cream);
+    background-color: #FFF8EA;
   }
 
   .input-field:focus {
-    border-color: var(--primary-green);
+    border-color: #7FB77E;
     box-shadow: 0 0 0 3px rgba(127, 183, 126, 0.2);
     outline: none;
   }
@@ -128,7 +120,7 @@
     bottom: 24px;
     right: 24px;
     padding: 16px 24px;
-    background-color: var(--primary-green);
+    background-color: #7FB77E;
     color: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -172,11 +164,11 @@
     width: 18px;
     height: 18px;
     margin-right: 8px;
-    accent-color: var(--primary-green);
+    accent-color: #7FB77E;
   }
 
   .link {
-    color: var(--primary-green);
+    color: #7FB77E;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -202,13 +194,13 @@
   }
 
   .language-switcher button.active {
-    background-color: var(--light-green);
-    color: var(--dark-text);
+    background-color: #B1D7B4;
+    color: #2D3E40;
     font-weight: 500;
   }
 
   .language-switcher button:hover:not(.active) {
-    background-color: var(--beige);
+    background-color: #F7EDDB;
   }
 
   .progress-container {
@@ -243,7 +235,7 @@
     left: 0;
     transform: translateY(-50%);
     height: 4px;
-    background-color: var(--primary-green);
+    background-color: #7FB77E;
     z-index: 1;
     transition: width 0.3s ease;
   }
@@ -265,14 +257,14 @@
   }
 
   .step.active {
-    border-color: var(--primary-green);
-    background-color: var(--primary-green);
+    border-color: #7FB77E;
+    background-color: #7FB77E;
     color: white;
   }
 
   .step.completed {
-    border-color: var(--primary-green);
-    background-color: var(--primary-green);
+    border-color: #7FB77E;
+    background-color: #7FB77E;
     color: white;
   }
 
@@ -289,7 +281,7 @@
 
   .step.active .step-label,
   .step.completed .step-label {
-    color: var(--dark-text);
+    color: #2D3E40;
     font-weight: 600;
   }
 
@@ -346,7 +338,7 @@
   }
 
   .requirement.met {
-    color: var(--primary-green);
+    color: #7FB77E;
   }
 
   .requirement-icon {
@@ -366,7 +358,7 @@
     margin: 0 auto;
     border-radius: 50%;
     box-sizing: content-box;
-    border: 4px solid var(--primary-green);
+    border: 4px solid #7FB77E;
     position: relative;
     animation: checkmarkScale 0.3s ease-in-out;
   }
@@ -378,8 +370,8 @@
     left: 28%;
     width: 25%;
     height: 50%;
-    border-right: 4px solid var(--primary-green);
-    border-bottom: 4px solid var(--primary-green);
+    border-right: 4px solid #7FB77E;
+    border-bottom: 4px solid #7FB77E;
     transform: rotate(45deg) translate(-40%, -60%);
     animation: checkmarkCheck 0.2s ease-in-out 0.3s forwards;
     opacity: 0;
