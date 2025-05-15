@@ -1,0 +1,57 @@
+.products {
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8faf8;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .toast {
+    animation: slideIn 0.3s ease-out forwards, fadeOut 0.5s 2s forwards;
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  @keyframes slideIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .flash-badge {
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.8;
+    }
+  }
+
+  .timer {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .category-btn.active {
+    background-color: #4ade80;
+    color: white;
+  }
+
+}
