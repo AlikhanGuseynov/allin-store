@@ -1,9 +1,15 @@
 'use client'
 
 import './page.scss'
-import './page.js'
+import initHomeFunc from './page.js'
+import {useEffect} from "react";
 
 const AuthComponent: React.FC = () => {
+    useEffect(() => {
+        setTimeout(() => {
+            initHomeFunc({})
+        }, 1000)
+    }, [])
 
     return (
         <div className={'home'}>
@@ -52,8 +58,13 @@ const AuthComponent: React.FC = () => {
 
                         <div
                             className="hidden md:flex items-center bg-cream-white bg-opacity-80 px-4 py-2 rounded-full">
-                      <span className="text-sm">☀️ Next delivery closes in <span className="font-bold text-herbal-green"
-                                                                                 id="countdown">02:43:21</span></span>
+                            <span className="text-sm">
+                                ☀️ Next delivery closes in
+                                <span
+                                    className="font-bold text-herbal-green"
+                                    id="countdown"> 02:43:21
+                                </span>
+                            </span>
                         </div>
 
                         <button

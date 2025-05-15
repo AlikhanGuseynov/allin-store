@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+export default function initHomeFunc() {
     // Logo animation
     const logoLetters = document.querySelectorAll('.logo-letter');
     logoLetters.forEach((letter, index) => {
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Countdown timer
     function updateCountdown() {
         const countdownEl = document.getElementById('countdown');
+        console.log(countdownEl)
         let [hours, minutes, seconds] = countdownEl.textContent.split(':').map(Number);
 
         seconds--;
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     setInterval(updateCountdown, 1000);
-
+    console.log('Modal')
     // Modal functionality
     const packModal = document.getElementById('packModal');
     const milkModal = document.getElementById('milkModal');
@@ -166,34 +167,36 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 100);
         });
     }
-});
-(function () {
-    function c() {
-        var b = a.contentDocument || a.contentWindow.document;
-        if (b) {
-            var d = b.createElement('script');
-            d.innerHTML = "window.__CF$cv$params={r:'94057b0974f9e3a6',t:'MTc0NzM0MTk0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName('head')[0].appendChild(d)
-        }
-    }
 
-    if (document.body) {
-        var a = document.createElement('iframe');
-        a.height = 1;
-        a.width = 1;
-        a.style.position = 'absolute';
-        a.style.top = 0;
-        a.style.left = 0;
-        a.style.border = 'none';
-        a.style.visibility = 'hidden';
-        document.body.appendChild(a);
-        if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
-            var e = document.onreadystatechange || function () {
-            };
-            document.onreadystatechange = function (b) {
-                e(b);
-                'loading' !== document.readyState && (document.onreadystatechange = e, c())
+    (function () {
+        function c() {
+            var b = a.contentDocument || a.contentWindow.document;
+            if (b) {
+                var d = b.createElement('script');
+                d.innerHTML = "window.__CF$cv$params={r:'94057b0974f9e3a6',t:'MTc0NzM0MTk0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                b.getElementsByTagName('head')[0].appendChild(d)
             }
         }
-    }
-})();
+
+        if (document.body) {
+            var a = document.createElement('iframe');
+            a.height = 1;
+            a.width = 1;
+            a.style.position = 'absolute';
+            a.style.top = 0;
+            a.style.left = 0;
+            a.style.border = 'none';
+            a.style.visibility = 'hidden';
+            document.body.appendChild(a);
+            if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else {
+                var e = document.onreadystatechange || function () {
+                };
+                document.onreadystatechange = function (b) {
+                    e(b);
+                    'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                }
+            }
+        }
+    })();
+
+}
