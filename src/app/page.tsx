@@ -1,13 +1,13 @@
 'use client'
 
 import './page.scss'
-import initHomeFunc from './page.js'
+import initHomeFunc from './page-func.js'
 import {useEffect} from "react";
 
 const AuthComponent: React.FC = () => {
     useEffect(() => {
         setTimeout(() => {
-            initHomeFunc({})
+            initHomeFunc()
         }, 1000)
     }, [])
 
